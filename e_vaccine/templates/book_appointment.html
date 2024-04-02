@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Appointment</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'book_appointment.css' %}">
+</head>
+<body>
+  <div class="appointment-form">
+    <h2>Book Appointment</h2>
+    <form id="appointmentForm" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="vaccineType">Select Vaccine:</label>
+        <select id="vaccineType" name="vaccineType" required>
+          {% for vaccine in vaccines %}
+          <option value="{{ vaccine.vaccine_name }}">{{ vaccine.vaccine_name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="hospitalName">Select Hospital:</label>
+        <select id="hospitalName" name="hospitalName" required>
+          {% for hospital in hospitals %}
+          <option value="{{ hospital.hospital_name }}">{{ hospital.hospital_name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit">Book Appointment</button>
+    </form>
+  </div>
+</body>
+</html>

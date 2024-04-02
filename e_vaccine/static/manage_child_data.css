@@ -1,0 +1,118 @@
+/* Additional styles for this page */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .manage-container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 18px;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="tel"], /* Added for contact number */
+    select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6" viewBox="0 0 12 6"><path fill="%23555555" d="M6 5.2l-5.8-4L0.1 1.1l5.9 4h0.1l5.9-4-0.1-0.9-5.8 4z"/></svg>');
+      background-repeat: no-repeat;
+      background-position-x: calc(100% - 12px);
+      background-position-y: center;
+      padding-right: 30px;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      resize: vertical;
+    }
+
+    button[type="submit"] {
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .upload-container {
+      margin-top: 15px;
+    }
+
+    .upload-label {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .custom-upload {
+      padding: 8px 16px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .custom-upload:hover {
+      background-color: #0056b3;
+    }
+
+    button[type="submit"] {
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      display: block; /* Display as block to center */
+      margin: 20px auto; /* Auto margins to center */
+    }

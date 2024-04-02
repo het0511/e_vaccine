@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parent Login</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Parent Login</h2>
+    {% if show_error %}
+      <h6><p class="error-message">Login unsuccessful. Please check your username or password.</p></h6>
+    {% endif %}
+    <form id="parentLoginForm" method="post">
+      {% csrf_token %}
+      <div class="input-group">
+        <label for="parentUsername">Username:</label>
+        <input type="text" id="parentUsername" name="parentUsername" required>
+      </div>
+      <div class="input-group">
+        <label for="parentPassword">Password:</label>
+        <input type="password" id="parentPassword" name="parentPassword" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <!-- New account link -->
+    <p>Don't have an account? <a href="{% url 'new_parent' %}">Create New Account</a></p>
+  </div>
+  
+  <script src="admin-script.js"></script> <!-- Optional JavaScript for admin-side validation -->
+  {% if show_error %}
+    <script>
+      // Automatically hide the error message after a delay (e.g., 5 seconds)
+      setTimeout(function() {
+        var errorMessage = document.querySelector('.error-message');
+        if (errorMessage) {
+          errorMessage.style.display = 'none';
+        }
+      }, 5000); // Adjust the delay as needed
+    </script>
+  {% endif %}
+</body>
+</html>
+

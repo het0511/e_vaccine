@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'appointment.css' %}">
+    <style>
+        .edit-button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 6px 11px;
+            cursor: pointer;
+            border-radius: 3px;
+            text-decoration: none; /* Remove underline for anchor element */
+            display: inline-block; /* Ensure anchor behaves like a button */
+        }
+
+        .edit-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dashboard</h1>
+        {% if request.session.username %}
+            <p><h2 class="welcome-message">Welcome, {{ request.session.name }}!</h2></p>
+            <a href="{% url 'parent_logout' %}" class="logout-button">Logout</a>
+        {% endif %}
+    </header><br>
+    <center><a href="{% url 'manage_child_data' %}" class="manage-child-data-button">Manage Child Data</a></center>
+    <div class="container">
+        <div id="appointmentList">
+            <h2>Appointments</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Serial No</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Approved By</th>
+                        <th>Contact Number</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appointment in appointments %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ appointment.date }}</td>
+                        <td>{{ appointment.time }}</td>
+                        <td>{{ appointment.status }}</td>
+                        <td>{{ appointment.approved_by }}</td>
+                        <td>{{ appointment.contact_number }}</td>
+                        <td><a href="{% url 'parent_edit_appointment' appointment.id %}" class="edit-button">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <center><a href="{% url 'book_appointment' %}" class="manage-child-data-button">Book Appointment</a></center>
+</body>
+</html>

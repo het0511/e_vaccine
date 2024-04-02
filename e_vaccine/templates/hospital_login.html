@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hospital Login</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Hospital Staff Login</h2>
+    {% if show_error %}
+      <h6><p class="error-message">Login unsuccessful. Please check your username or password.</p></h6>
+    {% endif %}
+    {% if rights_error %}
+      <h6><p class="error-message">This account do have appropriate privilage to log in.</p></h6>
+    {% endif %}
+
+    <form id="hospitalLoginForm" method="post">
+      {% csrf_token %}
+      <div class="input-group">
+        <label for="hospitalUsername">Username:</label>
+        <input type="text" id="hospitalUsername" name="hospitalUsername" required>
+      </div>
+      <div class="input-group">
+        <label for="hospitalPassword">Password:</label>
+        <input type="password" id="hospitalPassword" name="hospitalPassword" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+
+    <!-- New account link -->
+    <p>Don't have an account? <a href="{% url 'new_doctor' %}">Create New Account</a></p>
+  </div>
+  
+  <script src="admin-script.js"></script> <!-- Optional JavaScript for admin-side validation -->
+
+  {% if show_error %}
+    <script>
+      // Automatically hide the error message after a delay (e.g., 5 seconds)
+      setTimeout(function() {
+        var errorMessage = document.querySelector('.error-message');
+        if (errorMessage) {
+          errorMessage.style.display = 'none';
+        }
+      }, 5000); // Adjust the delay as needed
+    </script>
+  {% endif %}
+  {% if rights_error %}
+    <script>
+      // Automatically hide the error message after a delay (e.g., 5 seconds)
+      setTimeout(function() {
+        var errorMessage = document.querySelector('.error-message');
+        if (errorMessage) {
+          errorMessage.style.display = 'none';
+        }
+      }, 5000); // Adjust the delay as needed
+    </script>
+  {% endif %}
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Child Data</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'manage_child_data.css' %}">
+</head>
+<body>
+  <div class="manage-container">
+    <h2>Manage Child Data</h2>
+    <form id="childDataForm" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ form_data.name }}" required>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" onchange="calculateAge()" value="{{ form_data.dob }}" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" value="{{ form_data.age }}" readonly>
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" required>{{ form_data.address }}</textarea>
+      </div>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+
+  <script>
+    // JavaScript for age calculation
+    function calculateAge() {
+      const dob = document.getElementById('dob').value;
+      const today = new Date();
+      const birthDate = new Date(dob);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+
+      document.getElementById('age').value = age;
+    }
+  </script>
+</body>
+</html>

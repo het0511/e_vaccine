@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Appointment</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'edit_appointment.css' %}">
+</head>
+<body>
+  <div class="appointment-form">
+    <h2>Edit Appointment</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="vaccineType">Select Vaccine:</label>
+        <select id="vaccineType" name="vaccineType" required>
+          <!-- Dynamically populate vaccine options -->
+          {% for vaccine in vaccines %}
+            {% if vaccine.id == appointment.vaccine_id_id %}
+              <option value="{{ vaccine.id }}" selected>{{ vaccine.vaccine_name }}</option>
+            {% else %}
+              <option value="{{ vaccine.id }}">{{ vaccine.vaccine_name }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="hospitalName">Select Hospital:</label>
+        <select id="hospitalName" name="hospitalName" required>
+          <!-- Dynamically populate hospital options -->
+          {% for hospital in hospitals %}
+            {% if hospital.id == appointment.hospital_name_id %}
+              <option value="{{ hospital.id }}" selected>{{ hospital.hospital_name }}</option>
+            {% else %}
+              <option value="{{ hospital.id }}">{{ hospital.hospital_name }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit">Edit Appointment</button>
+    </form>
+  </div>
+</body>
+</html>

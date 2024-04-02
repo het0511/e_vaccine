@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hospital Registration</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'new_hospital.css' %}">
+</head>
+<body>
+  <div class="registration-form">
+    <h2>Hospital Registration</h2>
+    <form id="hospitalRegistrationForm">
+      <div class="form-group">
+        <label for="hospitalName">Hospital Name:</label>
+        <input type="text" id="hospitalName" name="hospitalName" required>
+      </div>
+      <div class="form-group">
+        <label for="hospitalAddress">Hospital Address:</label>
+        <input type="text" id="hospitalAddress" name="hospitalAddress" required>
+      </div>
+      <div class="form-group">
+        <label for="licenseNumber">License Number:</label>
+        <input type="number" id="licenseNumber" name="licenseNumber" required>
+      </div>
+      <button type="submit">Register Hospital</button>
+    </form>
+  </div>
+</body>
+</html>
+
